@@ -774,7 +774,8 @@ class COSDwarfs(COSHalos):
       Path to the FITS data files for COS-Halos
     """
     # Initialize with a .dat file
-    def __init__(self, tree=None, fits_path=None, kin_init_file=None, cdir=None):
+    def __init__(self, tree=None, fits_path=None, kin_init_file=None, load=True,
+       cdir=None, **kwargs):
 
         # Generate with type
         CGMAbsSurvey.__init__(self)
@@ -793,4 +794,10 @@ class COSDwarfs(COSHalos):
             self.kin_init_file = self.cdir+'/Kin/cosdwarfs_kin_driver.dat'
         else:
             self.kin_init_file = kin_init_file
+        # Init?
+        if load:
+            tarfiles = glob.glob(self.cdir+'cos-dwarfs_systems.v*.tar.gz')
+            tarfiles.sort()
+            tfile = tarfiles[-1]
+            self.load_sys(tfile=tfile, **kwargs)
 
