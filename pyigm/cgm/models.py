@@ -217,7 +217,7 @@ class ModifiedNFW(CGMPhase):
 
     def Ne_Rperp(self, Rperp, step_size=0.1*u.kpc, rmax=1., epsrel=1e-4, epsabs=1e-6,
                  *arg, **kwargs):
-        """ Calculate N_H at an input impact parameter Rperp
+        """ Calculate N_e at an input impact parameter Rperp
 
         Parameters
         ----------
